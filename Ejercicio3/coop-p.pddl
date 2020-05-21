@@ -12,12 +12,12 @@ T_0 T_45 T_90 T_270 T_315 - Tilt
 (:init 
     (uv-base n6 n10 Leader)
     (at-uv n6 n10 Leader)
-    ;(docked Leader)
+    (docked Leader)
     (uv-navmode N0 Leader)
 
     (uv-base n10 n2 Follower0)
     (at-uv n10 n2 Follower0)
-    ;(docked Follower0)
+    (docked Follower0)
     (uv-navmode N0 Follower0)
 
     (uv-orientation P_0 Leader)
@@ -77,8 +77,6 @@ T_0 T_45 T_90 T_270 T_315 - Tilt
     ;(= (energy-level Follower0) 100)
 )
 (:goal (and 
-    ;(preference NotAtBaseUav (not (docked ?uav)))
-    ;(preference NotAtBaseUgv (not (docked ?ugv)))
     (taken-photo n5 n9 T_0 P_0)
     (taken-photo n16 n13 T_0 P_0)
     ;(docked Leader)
@@ -89,10 +87,11 @@ T_0 T_45 T_90 T_270 T_315 - Tilt
 )
 
 (:constraints 
-    (and (sometime (not (docked Follower0)))
-    (sometime (not (docked Leader))))
+    (and  (preference NotAtBaseUav (sometime (not (docked Follower0))))
+    (preference NotAtBaseUgv (sometime (not (docked Leader)))))
 )
 
+(:metric minimize (+ (* 20 (is-violated NotAtBaseUav)) (* 1000 (is-violated NotAtBaseUgv))))
 
 ;(:metric minimize (+ (* 10 (is violated (not (docked ?uav))))(*15 (is violated (not (docked ?ugv))))))
 ;(:metric minimize (total-energy-used))
