@@ -1,8 +1,9 @@
 restaurante comida rapida operador -> mesas a atender
 
 acciones -> moverse
-	tomar comanda
-	llevvar pedido 
+	coger plato
+	dejar plato
+	tomar pedido
 
 lugares:
 	4 mesas
