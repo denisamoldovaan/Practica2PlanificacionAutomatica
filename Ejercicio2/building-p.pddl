@@ -8,10 +8,10 @@
 )
 (:init 
     (at_person p1 n4)
-    ;(at_person p2 n0)
+    (at_person p2 n0)
 
     (at_lift fl1 n0)
-    ;(at_lift fl2 n4)
+    (at_lift fl2 n4)
     (at_lift sl1 n3)
     (at_lift sl2 n4)
 
@@ -19,25 +19,25 @@
     (connected-fast n0 n2) (connected-fast n2 n4)
 
     (reachable fl1 n0) (reachable fl1 n2) (reachable fl1 n4)
-    ;(reachable fl2 n0) (reachable fl2 n2) (reachable fl2 n4)
+    (reachable fl2 n0) (reachable fl2 n2) (reachable fl2 n4)
 
     (reachable sl1 n0) (reachable sl1 n1) (reachable sl1 n2) (reachable sl1 n3) (reachable sl1 n4)
     (reachable sl2 n0) (reachable sl2 n1) (reachable sl2 n2) (reachable sl2 n3) (reachable sl2 n4)
 
-    (total_people fl1 n0) ;(total_people fl2 n0)
+    (total_people fl1 n0) (total_people fl2 n0)
     (total_people sl1 n0) (total_people sl2 n0)
 
     (next n0 n1) (next n1 n2) (next n2 n3) (next n3 n4)
 
     (= (duration-move-fast fl1) 20)
-    ;(= (duration-move-fast fl2) 10)
+    (= (duration-move-fast fl2) 10)
     (= (duration-move-slow sl1) 20)
     (= (duration-move-slow sl2) 20)
     
 )
 (:goal (and
     (at_person p1 n0)
-    ;(at_person p2 n4)
+    (at_person p2 n3)
 ))
 (:metric minimize (total-time))
 

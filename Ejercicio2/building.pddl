@@ -12,6 +12,7 @@
              (reachable ?lift - lift ?level - number)
              (total_people ?lift - lift ?n - number)
              (next ?n1 ?n2 - number)
+             (in_lift ?person - person ?lift - lift)
 )
 
 (:functions 
@@ -86,6 +87,7 @@
                 )
 :effect (and 
                 (at end (not (at_person ?person ?level)))
+                (at end (in_lift ?person ?lift))
                 (at end (not (total_people ?lift ?num1)))
                 (at end (total_people ?lift ?num2))
 )
@@ -96,11 +98,13 @@
 :duration (= ?duration 1)
 :condition (and 
                 ;(over all (at_person ?person ?level))
+                (at start (in_lift ?person ?lift))
                 (over all (at_lift ?lift ?level))
                 (at start (total_people ?lift ?num1)) 
                 (at start (next ?num2 ?num1))
                 )
 :effect (and 
+                (at end (not(in_lift ?person ?lift)))
                 (at end (at_person ?person ?level))
                 (at end (not (total_people ?lift ?num1)))
                 (at end (total_people ?lift ?num2))
