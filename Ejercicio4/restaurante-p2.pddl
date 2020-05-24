@@ -1,9 +1,9 @@
 (define (problem res2-p)
 (:domain res2 )
 (:objects 
-    p1 p2 - pedido
+    p1 p2 p3 - pedido
     mesa1 mesa2 mesa3 mesa4 - mesa  
-    doraemon1 doraemon2 - robot
+    doraemon1 doraemon2 doraemon3 - robot
 )
 (:init
 
@@ -26,20 +26,24 @@
     (= (distancia-cocina mesa3 ) 6) 
     (= (distancia-cocina mesa4 ) 6) 
 
-
-    (en-cocina-pedido p2)
-    (llevando-pedido p1 doraemon1)
-    (ocupado doraemon1)
-    (nota-mesa mesa3)
-    (at-mesa mesa2 doraemon1)
+    (en-cocina-robot doraemon1)
     (en-cocina-robot doraemon2)
+    (en-cocina-robot doraemon3)
+    (en-cocina-pedido p1)
+    (en-cocina-pedido p2)
+    (en-cocina-pedido p3)
+    (nota-mesa mesa4)
+    (nota-mesa mesa1)
+
+    
 )
 (:goal 
    (and 
-        (llevando-pedido p2 doraemon2)
-        (at-mesa mesa2 doraemon1)
         (at-mesa-pedido mesa1 p1)
-        (not(nota-mesa mesa3))
+        (at-mesa-pedido mesa2 p2)
+        (at-mesa-pedido mesa3 p3)
+        (not(nota-mesa mesa4))
+        (not(nota-mesa mesa1))
         
     )
 
